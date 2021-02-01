@@ -19,7 +19,7 @@ public class NumDivisores {
         for(int i=num; i>=1; i--){
             check=num%i;
             if(check==0){
-                System.out.println("Divisor numero "+j+"=;\t"+num/i);
+                System.out.println("Divisor numero "+j+"=\t"+num/i);
                 j++;
             }
         }
