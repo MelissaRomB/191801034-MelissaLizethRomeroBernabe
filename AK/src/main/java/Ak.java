@@ -16,6 +16,7 @@ public class Ak {
     public double danio, precio, velocidadDisparo;
     
     //Metodos
+    
     public String mostrarCaracteristicas(){
        return "\nEl material del arma es de " + material+" \ncon una disponibilidad "+ disponibilidad
                +"\n con una municion de "+municiones+"\n con una velocidad de disparo de "+velocidadDisparo
