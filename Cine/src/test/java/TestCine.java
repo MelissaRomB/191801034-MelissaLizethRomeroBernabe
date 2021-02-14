@@ -15,7 +15,8 @@ public class TestCine {
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
         String titulo;
-        Cine cine = new Cine("CINE", 9, 24);
+        //Cine cine = new Cine("CINE", 9, 24);
+        Cine cine = new Cine("CINE", 8, 23);
         
         System.out.println("¿Desea agregar una pelicula? ");
         String resp=scanner.nextLine();
@@ -31,10 +32,11 @@ public class TestCine {
             }
             else if(!resp.equals(answer))
                 break;
-        }
-        //cine.totalPeliculas();
-        cine.menuPeliculas();
-        System.out.println("Consulta horario");
+        }  
+        System.out.println("\nNumero de peliculas disponibles: " + cine.totalPeliculas());
+        System.out.println(cine.menuPeliculas());
+        
+        System.out.println("\nConsulta horario");
         int hora = scanner.nextInt();
         cine.horarioCine(hora);
     }

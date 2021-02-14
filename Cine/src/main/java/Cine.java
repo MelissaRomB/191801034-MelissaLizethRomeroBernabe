@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class Cine {
     public String nombre;
     public int horaInicio, horaFin;
-    public ArrayList <Pelicula> peliculas;
+    public ArrayList <Pelicula> peliculas = new ArrayList();
     
     public Cine(){
        
@@ -28,7 +28,6 @@ public class Cine {
         this.nombre = nombre;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
-        this.peliculas = null;
     }
     
     public String imprimirPeliculas (){
@@ -43,18 +42,21 @@ public class Cine {
         peliculas.add(pelicula);
     }
     public int totalPeliculas(){
-        return peliculas.size();
+        return  peliculas.size();
     }
     public String menuPeliculas(){
         String menu = "";
+        int i=1;
+        menu += "\t\t\n Menu de peliculas\n";
         for (Pelicula pelicula:peliculas){
-            menu += pelicula.titulo+"\n";
+            menu += i+" "+pelicula.titulo+"\n";
+            i++;
         }
-        return "\t\t Menu de peliculas\n" + menu;
+        return menu;
     }
     public void horarioCine(int hora){
         this.horaInicio = horaInicio;
-        if(hora==horaInicio)
+        if(hora>=horaInicio||hora<=horaFin)
             System.out.println("Cine abierto");
         else
             System.out.println("Cine cerrado");  
