@@ -37,6 +37,7 @@ public class Pelicula {
     public Pelicula(String titulo){
         this.titulo = titulo;
     }
+    
     @Override
     public String toString(){
         return "\nTitulo "+titulo+"\nClasificacion "+clasificacion+"\nCasa Productora "+casaProductora

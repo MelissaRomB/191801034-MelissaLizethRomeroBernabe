@@ -15,8 +15,9 @@ public class TestCine {
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
         String titulo;
-        //Cine cine = new Cine("CINE", 9, 24);
+       
         Cine cine = new Cine("CINE", 8, 23);
+        Cine cine2 = new Cine("Cinemex", 8, 24);
         
         System.out.println("¿Desea agregar una pelicula? ");
         String resp=scanner.nextLine();
