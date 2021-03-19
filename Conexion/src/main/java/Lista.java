@@ -1,6 +1,6 @@
 
 import java.sql.*;
-
+import Conexion.Conexion;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,12 +11,13 @@ import java.sql.*;
  *
  * @author USUARIO
  */
-public class Conexion {
+public class Lista {
     public static void main(String[] args){
         String url="jdbc:mysql://localhost:3306/usuario?zeroDateTimeBehavior=CONVERT_TO_NULL";
         try{
             //Crear conexion con base de datos
-            Connection conexion = DriverManager.getConnection(url,"root","");
+            //Connection conexion = DriverManager.getConnection(url,"root","");
+            Connection conexion = Conexion.getConnection();
             //Crear una declaracion de como se va a trabajar en la clase de datos
             Statement declaracion = conexion.createStatement();
             String SQL = "SELECT * FROM usuario";
@@ -28,9 +29,10 @@ public class Conexion {
                 System.out.println(resultado.getString("nombre"));
             }
             //Cerrar toda conexion con la base de datos
-            resultado.close();
+            Conexion.close(conexion, declaracion, resultado);
+            /*resultado.close();
             declaracion.close();
-            conexion.close();
+            conexion.close();*/
             
         }catch(SQLException ex){
             ex.printStackTrace(System.out);

@@ -1,3 +1,4 @@
+import Conexion.Conexion;
 import java.sql.*;
 import java.util.Scanner;
 /*
@@ -15,7 +16,7 @@ public class Eliminar {
         String url="jdbc:mysql://localhost:3306/usuario?zeroDateTimeBehavior=CONVERT_TO_NULL";
         try{
             //Crear conexion con base de datos
-            Connection conexion = DriverManager.getConnection(url,"root","");
+            Connection conexion = Conexion.getConnection();
             
             String SQL = "DELETE FROM usuario WHERE id=?";
             
@@ -29,8 +30,7 @@ public class Eliminar {
             declaracion.executeUpdate();
             
             //Cerrar toda conexion con la base de datos
-            declaracion.close();
-            conexion.close();
+            Conexion.close(conexion, declaracion);
             
         }catch(SQLException ex){
             ex.printStackTrace(System.out);

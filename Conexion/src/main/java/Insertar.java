@@ -1,5 +1,7 @@
+import Conexion.Conexion;
 import java.sql.*;
 import java.util.Scanner;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -16,7 +18,7 @@ public class Insertar {
         String url="jdbc:mysql://localhost:3306/usuario?zeroDateTimeBehavior=CONVERT_TO_NULL";
         try{
             //Crear conexion con base de datos
-            Connection conexion = DriverManager.getConnection(url,"root","");
+            Connection conexion = Conexion.getConnection();
             //Crear una declaracion de como se va a trabajar en la clase de datos
             
             String SQL = "INSERT INTO usuario(nombre,contraseña,status) VALUES(?,?,?)";
@@ -28,7 +30,7 @@ public class Insertar {
             String nombre = scan.nextLine();
             System.out.println("Ingrese la contraseña");
             String contraseña = scan.nextLine();
-            System.out.println("Ingrese el status de usuario");
+            System.out.println("Ingrese el status de usuario 1 activo, 0 no activo");
             int status = scan.nextInt();
             
             declaracion.setString(1, nombre);
@@ -38,8 +40,7 @@ public class Insertar {
             declaracion.executeUpdate();
             
             //Cerrar toda conexion con la base de datos
-            declaracion.close();
-            conexion.close();
+            Conexion.close(conexion, declaracion);
             
         }catch(SQLException ex){
             ex.printStackTrace(System.out);

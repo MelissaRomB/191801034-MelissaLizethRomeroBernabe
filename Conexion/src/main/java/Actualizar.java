@@ -1,4 +1,5 @@
 import java.sql.*;
+import Conexion.Conexion;
 import java.util.Scanner;
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -15,10 +16,10 @@ public class Actualizar {
         String url="jdbc:mysql://localhost:3306/usuario?zeroDateTimeBehavior=CONVERT_TO_NULL";
         try{
             //Crear conexion con base de datos
-            Connection conexion = DriverManager.getConnection(url,"root","");
+            Connection conexion = Conexion.getConnection();
             //Crear una declaracion de como se va a trabajar en la clase de datos
             
-            String SQL = "UPDATE usuario SET id=?"+ "WHERE id=?";
+            String SQL = "UPDATE usuario SET id=?, nombre=?"+ "WHERE id=?";
             PreparedStatement declaracion = conexion.prepareStatement(SQL); 
             
             //Insertar datos
@@ -28,15 +29,25 @@ public class Actualizar {
             String id2 = scan.nextLine();
             System.out.println("Ingrese el nuevo ID");
             String id = scan.nextLine();
+            System.out.println("Ingrese el nuevo nombre");
+            String nombre = scan.nextLine();
+            /*System.out.println("Ingrese la nueva contraseña");
+            String contraseña = scan.nextLine();
+            System.out.println("Ingrese el nuevo status 1 activo, 0 no activo");
+            String status = scan.nextLine();
+            
+            declaracion.setString(3, contraseña);
+            declaracion.setString(4, status);*/
             
             declaracion.setString(1, id);
-            declaracion.setString(2, id2);
+            declaracion.setString(2, nombre);
+            declaracion.setString(3, id2);
+         
             
             declaracion.executeUpdate();
             
             //Cerrar toda conexion con la base de datos
-            declaracion.close();
-            conexion.close();
+            Conexion.close(conexion, declaracion);
             
         }catch(SQLException ex){
             ex.printStackTrace(System.out);
