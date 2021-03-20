@@ -1,4 +1,6 @@
 import Conexion.Conexion;
+import DaoUsuarios.DaoUsuarios;
+import Usuarios.Usuario;
 import java.sql.*;
 import java.util.Scanner;
 
@@ -14,8 +16,19 @@ import java.util.Scanner;
  * @author USUARIO
  */
 public class Insertar {
-    public static void main(String[] args){
-        String url="jdbc:mysql://localhost:3306/usuario?zeroDateTimeBehavior=CONVERT_TO_NULL";
+    public static void main(String[] args) throws SQLException{
+        Scanner scan = new Scanner(System.in);
+        
+        System.out.println("Ingrese el nombre de usuario");
+        String nombre = scan.nextLine();
+        System.out.println("Ingrese la contraseña");
+        String password = scan.nextLine();
+       
+        Usuario usuario = new Usuario(nombre, password);
+        DaoUsuarios.Insertar(usuario);
+        
+        
+        /*String url="jdbc:mysql://localhost:3306/usuario?zeroDateTimeBehavior=CONVERT_TO_NULL";
         try{
             //Crear conexion con base de datos
             Connection conexion = Conexion.getConnection();
@@ -45,6 +58,6 @@ public class Insertar {
         }catch(SQLException ex){
             ex.printStackTrace(System.out);
         }
-        
+        */
     }    
 }

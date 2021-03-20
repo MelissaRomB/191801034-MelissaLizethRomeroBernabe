@@ -1,6 +1,8 @@
-
 import java.sql.*;
-import Conexion.Conexion;
+import DaoUsuarios.DaoUsuarios;
+import Usuarios.Usuario;
+import java.util.ArrayList;
+import java.util.List;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,10 +13,17 @@ import Conexion.Conexion;
  *
  * @author USUARIO
  */
+
 public class Lista {
-    public static void main(String[] args){
-        String url="jdbc:mysql://localhost:3306/usuario?zeroDateTimeBehavior=CONVERT_TO_NULL";
-        try{
+    public static void main(String[] args) throws SQLException{
+        
+        List <Usuario> listaUsuarios = new ArrayList<>();
+        listaUsuarios = DaoUsuarios.listaUsuarios();
+        
+        for(Usuario usuario:listaUsuarios){
+            System.out.println(usuario);
+        }
+        /*
             //Crear conexion con base de datos
             //Connection conexion = DriverManager.getConnection(url,"root","");
             Connection conexion = Conexion.getConnection();
@@ -30,13 +39,9 @@ public class Lista {
             }
             //Cerrar toda conexion con la base de datos
             Conexion.close(conexion, declaracion, resultado);
-            /*resultado.close();
+            resultado.close();
             declaracion.close();
-            conexion.close();*/
-            
-        }catch(SQLException ex){
-            ex.printStackTrace(System.out);
-        }
-        
+            conexion.close();
+        */
     }
 }

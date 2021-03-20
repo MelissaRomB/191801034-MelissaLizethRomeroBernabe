@@ -1,3 +1,5 @@
+package Usuarios;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,21 +14,29 @@ public class Usuario {
     private String nombre, password, fecha_alta;
     private int id;
     private boolean status;
+    
 
     public Usuario() {
     }
 
-    public Usuario(String nombre, int id,String password, String fecha_alta, boolean status) {
+    public Usuario(int id,String nombre,String password, String fecha_alta, boolean status) {
         this.nombre = nombre;
         this.id = id;
         this.password = password;
         this.fecha_alta = fecha_alta;
         this.status = status;
     }
+    public Usuario(String nombre,String password) {
+        this.nombre = nombre;
+        this.password = password;
+    }
+    public Usuario(int id) {
+        this.id = id;
+    }
 
     @Override
     public String toString() {
-        return "\n\t*Usuario" + "\nNombre: " + nombre + "\nID de usuario: " + id + "\nFecha de alta: " + fecha_alta + "\nPassword" + password+ "\nStatus: " + status;
+        return "\n\t*Usuario" + "\nID de usuario: " + id +"\nNombre: " + nombre +  "\nFecha de alta: " + fecha_alta + "\nPassword: " + password+ "\nStatus: " + status;
     }
 
     public String getNombre() {
@@ -58,5 +68,9 @@ public class Usuario {
     }
     public void setStatus(boolean status){
         this.status = status;
+    }
+
+    public String setNombre() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
