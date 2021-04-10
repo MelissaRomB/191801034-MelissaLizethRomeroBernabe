@@ -54,4 +54,17 @@ public class DaoUsuarios {
         declaracion.executeUpdate();
         Conexion.close(conexion, declaracion);
     }
+    public static void Actualizar(Usuario usuario) throws SQLException{
+        Connection conexion = Conexion.getConnection();
+        SQL = "UPDATE usuario SET nombre=?, password=?" + "WHERE id=?";
+        PreparedStatement declaracion = conexion.prepareStatement(SQL);
+        
+        
+        declaracion.setString(1, usuario.getNombre());
+        declaracion.setString(2, usuario.getPassword());
+        declaracion.setInt(3, usuario.getId());
+
+        declaracion.executeUpdate();
+        Conexion.close(conexion, declaracion);
+    }
 }

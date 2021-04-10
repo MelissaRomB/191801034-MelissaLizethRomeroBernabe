@@ -30,13 +30,27 @@ public class Usuario {
         this.nombre = nombre;
         this.password = password;
     }
+    public Usuario(int id, String nombre,String password) {
+        this.id = id;
+        this.nombre = nombre;
+        this.password = password;
+    }
     public Usuario(int id) {
         this.id = id;
     }
-
+    public Usuario(int id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+        //this.password = password;
+        //this. id2= id2;
+    }
+    public String imprimir() {
+        return "\n\t*Usuario" + "\nID de usuario: " + id +"\nNombre: " + nombre +  "\nFecha de alta: " + fecha_alta + "\nPassword: " + password+ "\nStatus: " + status;
+    }
+    
     @Override
     public String toString() {
-        return "\n\t*Usuario" + "\nID de usuario: " + id +"\nNombre: " + nombre +  "\nFecha de alta: " + fecha_alta + "\nPassword: " + password+ "\nStatus: " + status;
+        return nombre;
     }
 
     public String getNombre() {
